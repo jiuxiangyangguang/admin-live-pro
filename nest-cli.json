@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json.schemastore.org/nest-cli",
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "apps/api-server/src",
+  "compilerOptions": {
+    "deleteOutDir": true,
+    "webpack": true,
+    "tsConfigPath": "apps/api-server/tsconfig.app.json"
+  },
+  "monorepo": true,
+  "root": "apps/api-server",
+  "projects": {
+    "api-server": {
+      "type": "application",
+      "root": "apps/api-server",
+      "entryFile": "main",
+      "sourceRoot": "apps/api-server/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/api-server/tsconfig.app.json"
+      }
+    },
+    "user-manage-server": {
+      "type": "application",
+      "root": "apps/user-manage-server",
+      "entryFile": "main",
+      "sourceRoot": "apps/user-manage-server/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/user-manage-server/tsconfig.app.json"
+      }
+    },
+    "shopping-server": {
+      "type": "application",
+      "root": "apps/shopping-server",
+      "entryFile": "main",
+      "sourceRoot": "apps/shopping-server/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/shopping-server/tsconfig.app.json"
+      }
+    },
+    "live-server": {
+      "type": "application",
+      "root": "apps/live-server",
+      "entryFile": "main",
+      "sourceRoot": "apps/live-server/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/live-server/tsconfig.app.json"
+      }
+    },
+    "upload-server": {
+      "type": "application",
+      "root": "apps/upload-server",
+      "entryFile": "main",
+      "sourceRoot": "apps/upload-server/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/upload-server/tsconfig.app.json"
+      }
+    },
+    "chat-gpt-server": {
+      "type": "application",
+      "root": "apps/chat-gpt-server",
+      "entryFile": "main",
+      "sourceRoot": "apps/chat-gpt-server/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/chat-gpt-server/tsconfig.app.json"
+      }
+    },
+    "db": {
+      "type": "library",
+      "root": "libs/db",
+      "entryFile": "index",
+      "sourceRoot": "libs/db/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/db/tsconfig.lib.json"
+      }
+    },
+    "redis": {
+      "type": "library",
+      "root": "libs/redis",
+      "entryFile": "index",
+      "sourceRoot": "libs/redis/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/redis/tsconfig.lib.json"
+      }
+    },
+    "config": {
+      "type": "library",
+      "root": "libs/config",
+      "entryFile": "index",
+      "sourceRoot": "libs/config/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/config/tsconfig.lib.json"
+      }
+    },
+    "decorators": {
+      "type": "library",
+      "root": "libs/decorators",
+      "entryFile": "index",
+      "sourceRoot": "libs/decorators/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/decorators/tsconfig.lib.json"
+      }
+    },
+    "core": {
+      "type": "library",
+      "root": "libs/core",
+      "entryFile": "index",
+      "sourceRoot": "libs/core/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/core/tsconfig.lib.json"
+      }
+    }
+  }
+}

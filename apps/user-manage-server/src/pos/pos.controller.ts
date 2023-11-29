@@ -1,27 +1,34 @@
-import { Body, Controller, Param } from '@nestjs/common'
-import { CreatePoDto, MenuIds, user } from './dto/create-po.dto'
+import { Controller } from '@nestjs/common'
+import { MessagePattern } from '@nestjs/microservices'
+import { CreatePoDto, MenuIds } from './dto/create-po.dto'
 import { PosService } from './pos.service'
 
 @Controller('pos')
 export class PosController {
   constructor(private readonly posService: PosService) {}
 
-  create(@Body() createPoDto: CreatePoDto) {
+  @MessagePattern('po:create')
+  create(createPoDto: CreatePoDto) {
     return this.posService.create(createPoDto)
   }
 
+  @MessagePattern('po:findAll')
   findAll() {
     return this.posService.findAll()
   }
 
-  findOne(@Body() users: user) {
-    return this.posService.findOne(users.username)
+  @MessagePattern('po:findOne')
+  findOne(username: string) {
+    return this.posService.findOne(username)
   }
 
-  remove(@Param('id') id: string) {
-    return this.posService.remove(+id)
+  @MessagePattern('po:remove')
+  remove(id: number) {
+    return this.posService.remove(id)
   }
-  setMenu(@Body() menu: MenuIds) {
+
+  @MessagePattern('po:setMenu')
+  setMenu(menu: MenuIds) {
     return this.posService.setMenu(menu)
   }
 }

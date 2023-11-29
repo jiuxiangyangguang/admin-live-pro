@@ -1,12 +1,18 @@
-import { Controller, Get } from '@nestjs/common'
-import { LiveServerService } from './live-server.service'
+import { Controller } from '@nestjs/common'
+import { MessagePattern } from '@nestjs/microservices'
+import { LiveService } from './live-server.service'
 
 @Controller()
 export class LiveServerController {
-  constructor(private readonly liveServerService: LiveServerService) {}
+  constructor(private readonly liveServerService: LiveService) {}
 
-  @Get()
-  getHello(): string {
-    return this.liveServerService.getHello()
+  @MessagePattern('live:start')
+  startStreaming(streamName: string) {
+    return this.liveServerService.createStream(streamName)
+  }
+
+  @MessagePattern('live:list')
+  livelist() {
+    return this.liveServerService.livelist()
   }
 }

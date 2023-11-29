@@ -9,6 +9,7 @@
     "build": "nest build",
     "format": "prettier --write \"apps/**/*.ts\" \"libs/**/*.ts\"",
     "start": "nest start",
+    "start:dev:api": "nest start --watch",
     "start:dev": "node ./scripts/start.js",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/apps/api-server/main",
@@ -115,7 +116,9 @@
       "^@app/redis(|/.*)$": "<rootDir>/libs/redis/src/$1",
       "^@app/config(|/.*)$": "<rootDir>/libs/config/src/$1",
       "^@app/decorators(|/.*)$": "<rootDir>/libs/decorators/src/$1",
-      "^@app/core(|/.*)$": "<rootDir>/libs/core/src/$1"
+      "^@app/core(|/.*)$": "<rootDir>/libs/core/src/$1",
+      "^@app/types(|/.*)$": "<rootDir>/libs/types/src/$1",
+      "^@app/auth(|/.*)$": "<rootDir>/libs/auth/src/$1"
     }
   }
 }

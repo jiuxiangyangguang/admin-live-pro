@@ -1,10 +1,12 @@
+import { ConfigModules } from '@app/config'
+import { RedisCacheModule } from '@app/redis/redis-cache/redis-cache.module'
 import { Module } from '@nestjs/common'
 import { LiveServerController } from './live-server.controller'
-import { LiveServerService } from './live-server.service'
+import { LiveService } from './live-server.service'
 
 @Module({
-  imports: [],
+  imports: [ConfigModules, RedisCacheModule],
   controllers: [LiveServerController],
-  providers: [LiveServerService],
+  providers: [LiveService],
 })
 export class LiveServerModule {}

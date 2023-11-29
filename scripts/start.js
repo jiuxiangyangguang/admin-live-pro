@@ -1,7 +1,13 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const { exec } = require('child_process')
 
-const services = ['api-server', 'user-manage-server' /* other services */]
+const services = [
+  'api-server',
+  'user-manage-server',
+  'shopping-server',
+  'live-server',
+  'upload-server',
+]
 services.forEach((service) => {
   const child = exec(`nest start ${service} --watch`)
 

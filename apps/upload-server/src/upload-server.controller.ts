@@ -1,12 +1,13 @@
-import { Controller, Get } from '@nestjs/common'
-import { UploadServerService } from './upload-server.service'
+import { Controller } from '@nestjs/common'
+import { MessagePattern } from '@nestjs/microservices'
+import { UploadService } from './upload-server.service'
 
 @Controller()
 export class UploadServerController {
-  constructor(private readonly uploadServerService: UploadServerService) {}
+  constructor(private readonly uploadService: UploadService) {}
 
-  @Get()
-  getHello(): string {
-    return this.uploadServerService.getHello()
+  @MessagePattern('upload:file')
+  uploadFile(avatar) {
+    return this.uploadService.uploadFile(avatar)
   }
 }

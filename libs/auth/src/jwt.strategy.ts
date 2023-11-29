@@ -1,19 +1,13 @@
 import { RedisCacheService } from '@app/redis/redis-cache/redis-cache.service'
-import { HttpException, UnauthorizedException } from '@nestjs/common'
+import { HttpException, Inject, UnauthorizedException } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
 import { PassportStrategy } from '@nestjs/passport'
-import { InjectRepository } from '@nestjs/typeorm'
 import { User } from 'apps/user-manage-server/src/user/entities/user.entity'
 import { ExtractJwt, Strategy, StrategyOptions } from 'passport-jwt'
-import { Repository } from 'typeorm'
-import { AuthService } from './auth.service'
 
 export class JwtStorage extends PassportStrategy(Strategy) {
   constructor(
-    @InjectRepository(User)
-    private readonly userRepository: Repository<User>,
-    private readonly configService: ConfigService,
-    private readonly authService: AuthService,
+    @Inject(ConfigService) private readonly configService: ConfigService,
     private readonly redisCacheService: RedisCacheService,
   ) {
     super({
@@ -22,7 +16,7 @@ export class JwtStorage extends PassportStrategy(Strategy) {
       // 是否忽略令牌过期
       ignoreExpiration: false,
       passReqToCallback: true, // 使用Passport后，会将解析后的token信息挂载到req.user上
-      secretOrKey: configService.get('SECRET'),
+      secretOrKey: 'test123456' || configService.get('SECRET'),
     } as StrategyOptions)
   }
 

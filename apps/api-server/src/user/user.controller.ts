@@ -40,9 +40,10 @@ export class UserController {
 
   @Post('getUserList')
   @Roles(1)
-  @UseGuards(JwtAuthGuard, RolesGuard)
+  @UseGuards(JwtAuthGuard)
   @ApiOperation({ summary: '获取用户列表' })
   getUserList(@Body('pageInfo') pageInfo: PageInfo) {
+    console.log(pageInfo)
     return this.client.send('user:getUserList', pageInfo)
   }
 

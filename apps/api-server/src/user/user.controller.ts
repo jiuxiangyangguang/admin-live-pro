@@ -43,7 +43,6 @@ export class UserController {
   @UseGuards(JwtAuthGuard)
   @ApiOperation({ summary: '获取用户列表' })
   getUserList(@Body('pageInfo') pageInfo: PageInfo) {
-    console.log(pageInfo)
     return this.client.send('user:getUserList', pageInfo)
   }
 

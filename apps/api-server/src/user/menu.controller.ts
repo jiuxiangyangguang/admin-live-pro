@@ -20,7 +20,7 @@ export class MenuController {
   @Get('list/:id')
   @ApiOperation({ summary: '根据岗位ID 获取菜单' })
   getMenuById(@Param('id') id: string) {
-    return this.client.send('menu:getById', { id: +id })
+    return this.client.send('menu:getById', +id)
   }
 
   @Post('update')
@@ -30,6 +30,6 @@ export class MenuController {
 
   @Post('del:id')
   deleteMenu(@Param('id') id: string) {
-    return this.client.send('menu:delete', { id: +id })
+    return this.client.send('menu:delete', +id)
   }
 }

@@ -1,5 +1,6 @@
+import { ConfigModules } from '@app/config'
 import { Module } from '@nestjs/common'
-import { ConfigModule, ConfigService } from '@nestjs/config'
+import { ConfigService } from '@nestjs/config'
 import { JwtModule } from '@nestjs/jwt'
 import { PassportModule } from '@nestjs/passport'
 import { JwtStorage } from './jwt.strategy'
@@ -15,7 +16,7 @@ const jwtModule = JwtModule.registerAsync({
 })
 
 @Module({
-  imports: [ConfigModule, PassportModule, jwtModule],
+  imports: [ConfigModules, PassportModule, jwtModule],
   providers: [ConfigService, JwtStorage],
   exports: [jwtModule],
 })

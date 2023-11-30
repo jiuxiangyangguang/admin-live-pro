@@ -2,6 +2,7 @@ import { AllExceptionsFilter } from '@app/core/filter/any-exception.filter'
 import { ValidationPipe } from '@nestjs/common'
 import { NestFactory } from '@nestjs/core'
 import { Transport } from '@nestjs/microservices'
+
 import { UploadServerModule } from './upload-server.module'
 
 async function bootstrap() {

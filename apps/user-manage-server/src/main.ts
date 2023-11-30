@@ -2,6 +2,7 @@ import { AllExceptionsFilter } from '@app/core/mop/allExceptionsFilter'
 import { ValidationPipe } from '@nestjs/common'
 import { NestFactory } from '@nestjs/core'
 import { Transport } from '@nestjs/microservices'
+
 import { UserManageServerModule } from './user-manage-server.module'
 
 async function bootstrap() {

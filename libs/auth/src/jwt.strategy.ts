@@ -4,7 +4,6 @@ import { ConfigService } from '@nestjs/config'
 import { PassportStrategy } from '@nestjs/passport'
 import { User } from 'apps/user-manage-server/src/user/entities/user.entity'
 import { ExtractJwt, Strategy, StrategyOptions } from 'passport-jwt'
-
 export class JwtStorage extends PassportStrategy(Strategy) {
   constructor(
     @Inject(ConfigService) private readonly configService: ConfigService,
@@ -16,7 +15,7 @@ export class JwtStorage extends PassportStrategy(Strategy) {
       // 是否忽略令牌过期
       ignoreExpiration: false,
       passReqToCallback: true, // 使用Passport后，会将解析后的token信息挂载到req.user上
-      secretOrKey: 'test123456' || configService.get('SECRET'),
+      secretOrKey: configService.get('SECRET'),
     } as StrategyOptions)
   }
 

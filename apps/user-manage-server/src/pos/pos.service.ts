@@ -32,6 +32,7 @@ export class PosService {
   }
 
   async findOne(username: string) {
+    console.log(username)
     const user = await this.userRepository.findOne({ where: { username } })
     const pos = await this.userPosRepository.find({
       where: { user_id: user.id },

@@ -32,12 +32,12 @@ export class PosController {
   @Post('list')
   @ApiOperation({ summary: '根据用户名称来查询对应岗位' })
   findOne(@Body() users: user) {
-    return this.client.send('po:findOne', { username: users.username })
+    return this.client.send('po:findOne', users.username)
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.client.send('po:remove', { id: +id })
+    return this.client.send('po:remove', +id)
   }
 
   @Post('menu')

@@ -34,7 +34,7 @@ export class RoleController {
   @Get(':id')
   @ApiOperation({ summary: '根据id获取角色' })
   findOne(@Param('id') id: string) {
-    return this.client.send('role:findOne', { id: +id })
+    return this.client.send('role:findOne', +id)
   }
 
   @Post('update')
@@ -46,13 +46,13 @@ export class RoleController {
   @Delete('del/:id')
   @ApiOperation({ summary: '删除角色' })
   remove(@Param('id') id: string) {
-    return this.client.send('role:remove', { id: +id })
+    return this.client.send('role:remove', +id)
   }
 
   @Get('getmenu/:id')
   @ApiOperation({ summary: '根据角色获取菜单' })
   getMenu(@Param('id') id: string) {
-    return this.client.send('role:getMenu', { id: +id })
+    return this.client.send('role:getMenu', +id)
   }
 
   @Post('editmenu')

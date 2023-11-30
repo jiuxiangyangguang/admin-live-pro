@@ -2,6 +2,7 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "declaration": false,
+
     "outDir": "../../dist/apps/user-manage-server"
   },
   "include": ["src/**/*"],

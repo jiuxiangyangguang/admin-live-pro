@@ -3,7 +3,6 @@ import { HttpExceptionFilter } from '@app/core/filter/http-exception.filter'
 import { TransformInterceptor } from '@app/core/interceptor/transform.interceptor'
 import { NestFactory } from '@nestjs/core'
 import { AppModule } from './app.module'
-
 async function bootstrap() {
   const app = await NestFactory.create(AppModule)
   app.useGlobalInterceptors(new TransformInterceptor()) // 注册拦截成功请求
@@ -12,3 +11,12 @@ async function bootstrap() {
   await app.listen(1103)
 }
 bootstrap()
+// todo: 单板机哈哈
+// bug
+
+// tag
+// done
+// mark
+// test
+// update
+// fixme

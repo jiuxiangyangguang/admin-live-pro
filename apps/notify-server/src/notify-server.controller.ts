@@ -19,20 +19,21 @@ export class NotifyServerController {
     const now = moment()
     const end = moment(data.deadline, 'YYYY-MM-DD HH:mm:ss')
     const expireTime = Math.round(end.diff(now) / 1000)
-    console.log(expireTime)
     if (expireTime <= 0 || isNaN(expireTime)) {
       throw new RpcException({ message: '任务过期', statusCode: 400 })
     }
-    console.log(expireTime)
     const job: Job = await this.notifyServerService.sendJob(data, expireTime)
-    const count = await this.notifyServerService.notifyJob.getWaitingCount()
-
+    const jobs = await this.notifyServerService.notifyJob.getJobs(['waiting'])
+    const count = jobs.reduce((pre, cur) => {
+      if (cur && +cur.data.role === +data.role) pre += 1
+      return pre
+    }, 0)
     const { role } = data
     const eventSource = this.getUserEventSource(String(role))
 
     if (eventSource) {
       eventSource.next({
-        count,
+        count: count,
         id: job.id,
         timestamp: job.timestamp,
         type: job.data.type,
@@ -49,7 +50,6 @@ export class NotifyServerController {
   @MessagePattern('notify:getList')
   async getList(user: any) {
     const jobs = await this.notifyServerService.notifyJob.getJobs(['waiting'])
-    console.log(jobs)
     const arr = jobs.filter((item) =>
       item ? +item.data.role === +user.role_id : false,
     )

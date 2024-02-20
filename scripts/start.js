@@ -7,6 +7,7 @@ const services = [
   'shopping-server',
   'live-server',
   'upload-server',
+  'notify-server',
 ]
 // 启动服务
 services.forEach((service) => {

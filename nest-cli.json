@@ -126,6 +126,15 @@
       "compilerOptions": {
         "tsConfigPath": "libs/auth/tsconfig.lib.json"
       }
+    },
+    "notify-server": {
+      "type": "application",
+      "root": "apps/notify-server",
+      "entryFile": "main",
+      "sourceRoot": "apps/notify-server/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/notify-server/tsconfig.app.json"
+      }
     }
   }
 }

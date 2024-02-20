@@ -8,8 +8,9 @@ import {
   ExceptionFilter,
   HttpStatus,
 } from '@nestjs/common'
+import { RpcException } from '@nestjs/microservices'
 
-@Catch()
+@Catch(RpcException)
 export class AllExceptionsFilter implements ExceptionFilter {
   catch(exception, host: ArgumentsHost) {
     const ctx = host.switchToHttp()
@@ -21,7 +22,6 @@ export class AllExceptionsFilter implements ExceptionFilter {
       timestamp: new Date().toISOString(),
       ...exception.response,
     }
-
     // 将错误响应发送给客户端
     response.status(status).json(errorResponse)
   }

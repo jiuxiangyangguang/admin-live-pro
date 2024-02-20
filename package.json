@@ -18,11 +18,12 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./apps/api-server/test/jest-e2e.json",
     "start:api-server": "cross-env NODE_ENV=development nest start api-server --watch",
-    "start:user-manage-server": "nest start user-manage-server --watch",
-    "start:shopping-server": "nest start shopping-server --watch",
-    "start:live-server": "nest start live-server --watch",
-    "start:upload-server": "nest start upload-server --watch",
-    "start:chat-gpt-server": "nest start chat-gpt-server --watch"
+    "start:user-manage-server": "cross-env NODE_ENV=development nest start user-manage-server --watch",
+    "start:shopping-server": "cross-env NODE_ENV=development nest start shopping-server --watch",
+    "start:live-server": "cross-env NODE_ENV=development nest start live-server --watch",
+    "start:upload-server": "cross-env NODE_ENV=development nest start upload-server --watch",
+    "start:notify-server": "cross-env NODE_ENV=development nest start notify-server --watch",
+    "start:chat-gpt-server": "cross-env NODE_ENV=development nest start chat-gpt-server --watch"
   },
   "dependencies": {
     "@ffmpeg-installer/ffmpeg": "^1.1.0",

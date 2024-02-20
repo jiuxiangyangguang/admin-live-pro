@@ -4,6 +4,7 @@ import { RedisCacheModule } from '@app/redis/redis-cache/redis-cache.module'
 import { RedlockModule } from '@app/redis/redis-lock/redis-lock.module'
 import { Module } from '@nestjs/common'
 import { ClientsModule, Transport } from '@nestjs/microservices'
+import { NotifyController } from './notify/notify.controller'
 import { LoginController } from './user/login.controller'
 import { MenuController } from './user/menu.controller'
 import { PosController } from './user/pos.controller'
@@ -34,6 +35,7 @@ import { UserController } from './user/user.controller'
     RoleController,
     UserController,
     LoginController,
+    NotifyController,
   ],
 })
 export class AppModule {}
